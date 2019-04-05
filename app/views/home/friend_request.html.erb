@@ -1,0 +1,8 @@
+<%= form_tag({controller: "home", action: "send_request"}, method: "post") do |form| %>
+  <%= select_tag 'user', options_for_select(User.where.not(id: current_user.id).pluck(:firstname, :id)) %>
+  <%= submit_tag "Send" %>
+<% end %>
+
+<% @user_friends.each do |friend| %>
+  <%= friend.to_json %>
+<% end %>

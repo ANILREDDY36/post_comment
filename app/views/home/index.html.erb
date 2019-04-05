@@ -1,0 +1,12 @@
+<% if current_user %>
+  <p><%= current_user.email %></p>
+  <p><%= current_user.firstname %> - <%= current_user.lastname %></p>
+  <%= image_tag current_user.profile %>
+  <%= link_to "Post", posts_path %>
+  <%= link_to "Friend Request", friend_request_path %>
+
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<% else %>
+  <p>please login</p>
+  <%= link_to 'Sign In', new_user_session %>
+<% end %>
